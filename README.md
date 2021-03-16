@@ -60,3 +60,58 @@
 8. Sinatra: Returning HTML
 - [x] Define a new route, called `get '/cat'`.
 - [x] Using this image: http://bit.ly/1eze8aE , return an HTML string from the route that displays a cat photograph surrounded by a red dashed border
+
+9. Views
+- [x] Create a directory called `views`, within the same directory as your `app.rb` file
+- [x] Create an `index.erb` file (a 'view file') within the `views` directory
+- [x] Move the HTML string you wrote in `app.rb` ('routing file') into the view file you just created
+- [x] Replace the HTML string in the routing file with the statement `erb(:index)`
+- [x] Restart your server, and visit your previously-working route
+- [x] Explain to your pair partner what you see.
+
+10. erb
+- [x] Add an `h1` tag to your `index.erb` view file, with the words 'My name is ' inside it.
+- [x] At the end of the `h1` tag (before it closes), append an empty interpolated Ruby Expression using `<%= %>` ('ERB tags')
+- [x] Inside these ERB tags, write an expression that `sample`s a random name from the following array: `["Amigo", "Misty", "Almond"]`
+- [x] Restart your server and visit the path associated with the cat route.
+
+11. Keeping views clean
+- [x] Move the expression for generating a random name into the route for your view, assigning it to an _instance variable_
+- [x] Substitute the expression within the view for the instance variable instead
+- [x] Visit the webpage to ensure nothing has gone wrong.
+
+12. Introducing params
+- [x] Rename your `/cat` route to `/random-cat`.
+- [x] Build a new route, `/named-cat`, that does the same as `/random-cat`.
+- [x] Instead of setting the `@name` instance variable equal to a sampled array, set it equal to `params[:name]`
+- [x] Visit your route from a browser
+- [x] Explain to your pair partner what you see
+*No name because the param hasn't been set*
+- [x] In the browser URL, add the following **query string** after the `/named-cat` path: `?name=Ashley`, and visit that page
+- [ ] Explain to your pair partner what you see
+*Because it was given a param it was assigned a name*
+- [x] In the line before you assign your `@name` variable, print (`p`) the `params` of the request
+- [x] Restart your server and refresh the page. Check the terminal (**server logs**) and explain to your pair partner what you see
+- [x] Change parts of the **query string** within the URL bar of your browser until you can fully explain how it works to your pair partner.
+
+13. Using forms
+- [x] Add a `form` to the view rendered by the `/named-cat` route
+- [x] Set the form `action` attribute to the `/named-cat` path
+- [x] Add an `input` element within the form, with a `type` attribute of `text` and a `name` attribute of `name`
+- [x] Add another `input` element within the form, with a `type` attribute of `submit` and a `value` attribute of `Submit`
+- [x] Visit the page in your browser. Use the form to change the name of the cat
+- [x] Using `<% if %>` within your view, conditionally render the form only if a user has not entered a name (i.e. if `@name` is empty)
+- [x] Explain to your pair partner how the attributes of inputs in the form affect the query string in the URL bar when you submit the form
+*Easier for the user to type something in*
+- [x] Modify some of the attributes of the inputs (e.g. the `name` attribute) and explain to your pair partner how this affects the query string in the URL bar when you submit the form
+- [x] Print the incoming `params` to the server logs each time you visit the route
+- [x] Explain to your pair partner how modifying input attributes (e.g. `name`) affects the incoming `params` hash
+
+13. POSTed params
+- [x] Write a new `get` route that renders only the cat-naming `form`
+- [x] Add a `method` attribute to your `form` element, with the value `"post"`
+- [x] Change your `/named-cat` route to use `post` instead of `get`
+- [x] Interact with your application
+- [x] Observe the URL query string when you submit the form
+- [x] Observe the printed `params` when you submit the form
+- [x] Explain your observations to your pair partner.
